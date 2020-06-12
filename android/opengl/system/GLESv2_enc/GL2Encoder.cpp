@@ -1,3 +1,7 @@
+#pragma GCC diagnostic ignored "-Wmismatched-tags"
+#pragma GCC diagnostic ignored "-Wunused-variable"
+#pragma GCC diagnostic ignored "-Wsign-compare"
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /*
 * Copyright (C) 2011 The Android Open Source Project
 *
