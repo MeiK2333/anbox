@@ -2,6 +2,10 @@
 #pragma GCC diagnostic ignored "-Wunused-variable"
 #pragma GCC diagnostic ignored "-Wsign-compare"
 #pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wmismatched-new-delete"
+#pragma GCC diagnostic ignored "-Wgnu-designator"
+#pragma GCC diagnostic ignored "-Wunused-function"
+#pragma GCC diagnostic ignored "-Wformat"
 /*
 * Copyright (C) 2011 The Android Open Source Project
 *
