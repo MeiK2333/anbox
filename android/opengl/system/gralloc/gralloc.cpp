@@ -5,6 +5,7 @@
 #pragma GCC diagnostic ignored "-Wmismatched-new-delete"
 #pragma GCC diagnostic ignored "-Wgnu-designator"
 #pragma GCC diagnostic ignored "-Wunused-function"
+#pragma GCC diagnostic ignored "-Wformat"
 /*
 * Copyright (C) 2011 The Android Open Source Project
 *
