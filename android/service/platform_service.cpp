@@ -1,3 +1,13 @@
+#pragma GCC diagnostic ignored "-Wmismatched-tags"
+#pragma GCC diagnostic ignored "-Wunused-variable"
+#pragma GCC diagnostic ignored "-Wsign-compare"
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wmismatched-new-delete"
+#pragma GCC diagnostic ignored "-Wgnu-designator"
+#pragma GCC diagnostic ignored "-Wunused-function"
+#pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wmacro-redefined"
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
 /*
  * Copyright (C) 2016 Simon Fels <morphis@gravedo.de>
  *

@@ -6,6 +6,8 @@
 #pragma GCC diagnostic ignored "-Wgnu-designator"
 #pragma GCC diagnostic ignored "-Wunused-function"
 #pragma GCC diagnostic ignored "-Wformat"
+#pragma GCC diagnostic ignored "-Wmacro-redefined"
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
 /*
 * Copyright (C) 2011 The Android Open Source Project
 *
