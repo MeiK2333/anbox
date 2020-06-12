@@ -3,7 +3,7 @@ LOCAL_PATH := $(call my-dir)
 ### GLESv1_enc Encoder ###########################################
 $(call emugl-begin-shared-library,libGLESv1_enc)
 
-LOCAL_CFLAGS += -DLOG_TAG=\"emuglGLESv1_enc\" -Wno-mismatched-tags
+LOCAL_CFLAGS += -DLOG_TAG=\"emuglGLESv1_enc\" -Wno-error=mismatched-tags
 
 LOCAL_SRC_FILES := \
         GLEncoder.cpp \
