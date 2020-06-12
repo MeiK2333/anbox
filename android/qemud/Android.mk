@@ -14,7 +14,9 @@ LOCAL_SRC_FILES:= \
 LOCAL_CFLAGS := \
     -Wno-unused-parameter \
 	-Wno-unused-variable \
-	-Wno-unused-function
+	-Wno-unused-function \
+	-Wno-mismatched-tags \
+	-Wno-gnu-designator
 
 LOCAL_SHARED_LIBRARIES := \
 	libcutils liblog

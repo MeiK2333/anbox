@@ -7,6 +7,13 @@
 # Also define BUILD_EMULATOR_OPENGL_DRIVER to 'true' to build the gralloc
 # stuff as well.
 #
+LOCAL_CFLAGS := \
+    -Wno-unused-parameter \
+	-Wno-unused-variable \
+	-Wno-unused-function \
+	-Wno-mismatched-tags \
+	-Wno-gnu-designator
+
 ifeq (true,$(BUILD_EMULATOR_OPENGL))
 
 # Top-level for all modules
