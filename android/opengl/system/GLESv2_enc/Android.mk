@@ -10,7 +10,7 @@ LOCAL_SRC_FILES := \
     gl2_enc.cpp \
     gl2_entry.cpp
 
-LOCAL_CFLAGS += -DLOG_TAG=\"emuglGLESv2_enc\" -Wno-mismatched-tags
+LOCAL_CFLAGS += -DLOG_TAG=\"emuglGLESv2_enc\" -w
 
 $(call emugl-export,C_INCLUDES,$(LOCAL_PATH))
 $(call emugl-import,libOpenglCodecCommon)
