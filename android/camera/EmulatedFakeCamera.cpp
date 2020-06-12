@@ -25,6 +25,8 @@
 #include <cutils/properties.h>
 #include "EmulatedFakeCamera.h"
 #include "EmulatedCameraFactory.h"
+#include "EmulatedFakeCameraDevice.h"
+#include "EmulatedFakeRotatingCameraDevice.h"
 
 namespace android {
 
@@ -33,12 +35,20 @@ EmulatedFakeCamera::EmulatedFakeCamera(int cameraId,
                                        struct hw_module_t* module)
         : EmulatedCamera(cameraId, module),
           mFacingBack(facingBack),
-          mFakeCameraDevice(this)
+          mFakeCameraDevice(nullptr)
 {
+    const char *key = "ro.kernel.qemu.camera.fake.rotating";
+    char prop[PROPERTY_VALUE_MAX];
+    if (property_get(key, prop, nullptr) > 0) {
+        mFakeCameraDevice = new EmulatedFakeRotatingCameraDevice(this);
+    } else {
+        mFakeCameraDevice = new EmulatedFakeCameraDevice(this);
+    }
 }
 
 EmulatedFakeCamera::~EmulatedFakeCamera()
 {
+    delete mFakeCameraDevice;
 }
 
 /****************************************************************************
@@ -47,7 +57,7 @@ EmulatedFakeCamera::~EmulatedFakeCamera()
 
 status_t EmulatedFakeCamera::Initialize()
 {
-    status_t res = mFakeCameraDevice.Initialize();
+    status_t res = mFakeCameraDevice->Initialize();
     if (res != NO_ERROR) {
         return res;
     }
@@ -60,6 +70,8 @@ status_t EmulatedFakeCamera::Initialize()
 
     mParameters.set(EmulatedCamera::ORIENTATION_KEY,
                     gEmulatedCameraFactory.getFakeCameraOrientation());
+    mParameters.set(CameraParameters::KEY_ROTATION,
+                    gEmulatedCameraFactory.getFakeCameraOrientation());
 
     res = EmulatedCamera::Initialize();
     if (res != NO_ERROR) {
@@ -70,21 +82,26 @@ status_t EmulatedFakeCamera::Initialize()
      * Parameters provided by the camera device.
      */
 
-    /* 352x288 and 320x240 frame dimensions are required by the framework for
-     * video mode preview and video recording. */
+   /* 352x288, 320x240 and 176x144 frame dimensions are required by
+     * the framework for video mode preview and video recording. */
     mParameters.set(CameraParameters::KEY_SUPPORTED_PICTURE_SIZES,
-                    "640x480,352x288,320x240");
+                    "1920x1080,1280x720,640x480,352x288,320x240");
     mParameters.set(CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES,
-                    "640x480,352x288,320x240");
-    mParameters.setPreviewSize(640, 480);
-    mParameters.setPictureSize(640, 480);
+                    "1920x1080,1280x720,640x480,352x288,320x240,176x144");
+    mParameters.set(CameraParameters::KEY_SUPPORTED_VIDEO_SIZES,
+                    "1920x1080,1280x720,640x480,352x288,320x240,176x144");
+    mParameters.set(CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO,
+                    "1920x1080");
+
+    mParameters.setPreviewSize(1920, 1080);
+    mParameters.setPictureSize(1920, 1080);
 
     return NO_ERROR;
 }
 
 EmulatedCameraDevice* EmulatedFakeCamera::getCameraDevice()
 {
-    return &mFakeCameraDevice;
+    return mFakeCameraDevice;
 }
 
 };  /* namespace android */
