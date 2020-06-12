@@ -6,7 +6,7 @@ $(call emugl-begin-shared-library,libEGL_emulation)
 $(call emugl-import,libOpenglSystemCommon)
 $(call emugl-set-shared-library-subpath,egl)
 
-LOCAL_CFLAGS += -DLOG_TAG=\"EGL_emulation\" -DEGL_EGLEXT_PROTOTYPES -DWITH_GLES2
+LOCAL_CFLAGS += -DLOG_TAG=\"EGL_emulation\" -DEGL_EGLEXT_PROTOTYPES -DWITH_GLES2 -Wno-gnu-designator -Wno-unused-function -Wno-gnu-designator
 
 LOCAL_SRC_FILES := \
     eglDisplay.cpp \
