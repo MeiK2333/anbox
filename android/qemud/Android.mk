@@ -11,6 +11,9 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= \
 	qemud.c
 
+LOCAL_CFLAGS := \
+    -Wno-unused-parameter \
+	-Wno-unused-variable
 
 LOCAL_SHARED_LIBRARIES := \
 	libcutils liblog
