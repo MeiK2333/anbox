@@ -14,7 +14,8 @@ LOCAL_SRC_FILES := \
     external/process-cpp-minimal/src/core/posix/child_process.cpp
 LOCAL_CFLAGS := \
     -DANDROID \
-    -fexceptions
+    -fexceptions \
+    -Wno-unused-parameter
 LOCAL_C_INCLUDES += \
     $(LOCAL_PATH)/external/process-cpp-minimal/include
 include $(BUILD_STATIC_LIBRARY)
